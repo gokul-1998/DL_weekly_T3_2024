@@ -21,3 +21,5 @@
 
 
 - what is exploding and vanishing gradients?
+
+- https://github.com/ChristosChristofidis/awesome-deep-learning
