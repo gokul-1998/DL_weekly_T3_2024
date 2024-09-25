@@ -43,23 +43,36 @@ class Perceptron:
             The fitted model.
         """
         # Initialize weights randomly
-        self.w = np.random.rand(X.shape[1])
+        # self.w = np.random.rand(X.shape[1])
+        self.w = np.array([0, 0])        
+        # initialized  with zeros because, i want to update the  weights atlease once.  
+        
         
         # Convert labels to -1 (for 0 class) and 1 (for 1 class)
         y_transformed = np.where(y == 0, -1, 1)
         
         # Learning loop
-        while not self.convergence(X, y):
+        while True:
+            misclassified = False  # Keep track if any update happens
+            
             # Pick a random point from the dataset
             for i in range(len(X)):
                 # For positive class (y_transformed = 1), if w.x < 0, update w
                 if y_transformed[i] == 1 and np.dot(self.w, X[i]) <= 0:
                     self.w = self.w + X[i]
                     self.update_count += 1
+                    misclassified = True
+                    print(f"Updated weights for positive class: {self.w}")
                 # For negative class (y_transformed = -1), if w.x >= 0, update w
                 elif y_transformed[i] == -1 and np.dot(self.w, X[i]) >= 0:
                     self.w = self.w - X[i]
                     self.update_count += 1
+                    misclassified = True
+                    print(f"Updated weights for negative class: {self.w}")
+
+            # If no misclassifications, the algorithm has converged
+            if not misclassified:
+                break
 
         return self
 
