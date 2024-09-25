@@ -23,3 +23,11 @@
 - what is exploding and vanishing gradients?
 
 - https://github.com/ChristosChristofidis/awesome-deep-learning
+
+L-1.5
+    - MP neurons
+    - thresholding logic  ,
+    - perceptron
+    - perceptron learning algorithm
+    - MLP
+    0 
