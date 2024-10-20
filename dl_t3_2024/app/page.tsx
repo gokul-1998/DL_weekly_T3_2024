@@ -1,11 +1,17 @@
-import MarkdownComponent, { getStaticProps } from '../components/MarkDownComponent';
 
 
-export default function Home() {
+export default function Home({ routes }) {
   return (
     <div>
       <h1>My Homepage</h1>
-      <MarkdownComponent content={} />
+      <h2>Available Routes:</h2>
+      <ul>
+        {routes.map(({ route }) => (
+          <li key={route}>
+            <a href={route}>{route}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
